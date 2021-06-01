@@ -28,7 +28,7 @@ function createMap(cities) {
   }
   
   function createMarkers(response) {
-
+    console.log("hi")
     var cities = response.result;
     var city_markers = []
   

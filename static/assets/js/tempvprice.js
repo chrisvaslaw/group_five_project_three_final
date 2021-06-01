@@ -1,7 +1,7 @@
 var tempvprice = (function() {
-var margin = {top: 20, right: 20, bottom: 50, left: 50},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+var margin = {top: 20, right: 20, bottom: 150, left: 150},
+    width = window.innerWidth - margin.left - margin.right,
+    height = window.innerHeight - margin.top - margin.bottom;
 
 
 var x = d3.scaleLinear().range([0, width]);
@@ -54,26 +54,15 @@ function process_data(data) {
       .on("mouseover", tip.show)
       .on("mouseout", tip.hide)
 
-  // svg.selectAll("text")
-  //     .data(data)
-  //     .enter()
-  //     .append("text")
-  //     .text((d) => d.abbr)
-  //     .attr("x", function(d) { return x(d.temp); })
-  //     .attr("y", function(d) { return y(d.poverty); })
-  //     .attr("text-anchor", "middle")
-  //     .attr("dy", ".35em")
-  //     .style("stroke", "#fff")
-  //     .on("mouseover", tip.show)
-  //     .on("mouseout", tip.hide)
-
   // Add the X Axis
   svg.append("g")
+      .style("font", "2em times")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x));
 
   // Add the Y Axis
   svg.append("g")
+      .style("font", "2em times")
       .call(d3.axisLeft(y));
   
   svg.append("text")
@@ -82,13 +71,15 @@ function process_data(data) {
      .attr("x", 0-(height/2))
      .attr("dy", "1em")
      .attr("text-anchor", "middle")
+     .attr("font-size", "3em")
      .text("2021 Average Home Prices (m)")
 
   svg.append("text")             
   .attr("transform",
         "translate(" + (width/2) + " ," + 
-                      (height + margin.top + 20) + ")")
+                      (height + margin.top + 60) + ")")
   .style("text-anchor", "middle")
+  .attr("font-size", "3em")
   .text("Temperature");
 
 };
