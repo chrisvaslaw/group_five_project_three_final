@@ -24,7 +24,7 @@ def locations():
 
 @app.route("/api/weather.json")
 def weather():
-    locations = mongo.db.locations.find().limit(500)
+    locations = mongo.db.locations.find().limit(100)
     weather_data = []
    
     for location in locations:
